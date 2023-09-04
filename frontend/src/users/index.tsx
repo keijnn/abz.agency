@@ -1,7 +1,10 @@
+
+// @ts-ignore
 export function Users({ users }: []) {
+
   return (
     <div>
-      {users.length > 0 && users.map(user => {
+      {users.length > 0 && users.map((user: any) => {
         return (
           <div key={user.id}>
             <p>{user.id}</p>

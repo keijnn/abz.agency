@@ -35,6 +35,7 @@ export function App() {
   return (
     <div style={{display: 'flex'}}>
       <div>
+        { /* @ts-ignore */ }
         <Users users={users} />
         <button onClick={() => setCount(prev => prev + 1)}>New Users</button>
       </div>

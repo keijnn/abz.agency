@@ -13,7 +13,7 @@ export function CreateNewUser() {
 
   const [answer, setAnswer] = useState('')
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value, type } = e.target;
 
     if (type === 'file') {
@@ -30,7 +30,7 @@ export function CreateNewUser() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     const formDataToSend = new FormData();
@@ -38,6 +38,7 @@ export function CreateNewUser() {
     formDataToSend.append('email', formData.email);
     formDataToSend.append('phone', formData.phone);
     formDataToSend.append('position_id', formData.position_id);
+    // @ts-ignore
     formDataToSend.append('image', formData.image);
 
 
@@ -65,7 +66,7 @@ export function CreateNewUser() {
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setAnswer('Error!', error)
+      setAnswer('Error!')
     }
   };
 
