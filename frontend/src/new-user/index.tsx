@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+
+
 export function CreateNewUser() {
   const [formData, setFormData] = useState({
     name: '',
@@ -40,9 +42,13 @@ export function CreateNewUser() {
 
 
     try {
-      const getToken = await fetch('http://localhost:3001/token')
+      const getToken = await fetch(process.env.REACT_APP_URL + '/token', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }})
       const token = await getToken.text()
-      const response = await fetch('http://localhost:3001/auth', {
+      const response = await fetch(process.env.REACT_APP_URL + '/auth', {
         method: 'POST',
         headers: {
           'token': token

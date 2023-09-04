@@ -2,6 +2,9 @@ import { Users } from "./users";
 import { useEffect, useState } from "react";
 import { CreateNewUser } from "./new-user";
 
+
+
+
 export function App() {
 
   const [users, setUsers] = useState([])
@@ -11,8 +14,12 @@ export function App() {
   useEffect(() => {
     (async function() {
       if (page !== null) {
-        const url = `http://localhost:3001${page}`
-        const res = await fetch(url)
+        const url = process.env.REACT_APP_URL + page
+        const res = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }})
 
         if (!res.ok) throw res
 
@@ -24,7 +31,7 @@ export function App() {
       }
     }())
   }, [count])
-  console.log(users)
+
   return (
     <div style={{display: 'flex'}}>
       <div>
